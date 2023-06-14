@@ -21,7 +21,6 @@ const Cart = () => {
       <div className='cart-resume'>
         {formatcurrency(totalPrice, 'BRL')}
       </div>
-      Carrinho
     </section>
   )
 }
