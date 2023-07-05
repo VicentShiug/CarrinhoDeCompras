@@ -7,7 +7,7 @@ import formatcurrency from '../../utils/formatCurrency'
 import AppContext from '../../context/AppContext'
 
 const ProductCard = ({ data }) => {
-  const { title, price, thumbnail } = data
+  const { title, price, thumbnail, permalink } = data
 
   const { cartItems, setCartItems } = useContext(AppContext)
 
@@ -18,16 +18,17 @@ const ProductCard = ({ data }) => {
 
   return (
     <section className='product-card'>
-      <img
-        src={thumbnail.replace(/\w\.jpg/gi, 'W.jpg')}
-        alt="product"
-        className='card__image'
-
-      />
-      <div className='card__infos'>
-        <h2 className='card__price'>{formatcurrency(price, 'BRL')}</h2>
-        <h2 className='card__title'>{title}</h2>
-      </div>
+      <a href={permalink} target='_blank' rel='noreferrer' style={{ textDecoration: 'none', color: 'inherit' }}>
+        <img
+          src={thumbnail.replace(/\w\.jpg/gi, 'W.jpg')}
+          alt="product"
+          className='card__image'
+        />
+        <div className='card__infos'>
+          <h2 className='card__price'>{formatcurrency(price, 'BRL')}</h2>
+          <h2 className='card__title'>{title}</h2>
+        </div>
+      </a>
       <button
         type='button'
         className='button__add-cart'
